@@ -354,6 +354,7 @@ function CreateForm(props) {
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _LoginForm_module_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LoginForm.module.scss */ "./src/components/LoginForm/LoginForm.module.scss");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
 /* provided dependency */ var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
@@ -368,6 +369,7 @@ function LoginForm(props) {
     email: '',
     password: ''
   });
+  const navigateTo = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.useNavigate)();
   const handleChange = e => {
     // Spread the credentials in so that as you edit, the other edited fields remain in place
     // In 'e.target.name' the 'name' refers to whichever target name you are currently clicked on, i.e. "email", "password"
@@ -386,6 +388,7 @@ function LoginForm(props) {
     onSubmit: e => {
       e.preventDefault();
       props.login(credentials);
+      navigateTo('/');
     }
   }, /*#__PURE__*/React.createElement("input", {
     className: _LoginForm_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].input,
@@ -554,7 +557,6 @@ function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" 
 function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 
 function UpdateForm(props) {
-  var _props$user, _props$user2;
   const handleSubmit = async e => {
     e.preventDefault();
     try {
@@ -574,16 +576,14 @@ function UpdateForm(props) {
   return /*#__PURE__*/React.createElement("form", {
     onSubmit: handleSubmit,
     className: _UpdateForm_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].form
-  }, /*#__PURE__*/React.createElement("h2", null, "Update a new Blog, ", /*#__PURE__*/React.createElement("span", {
-    className: _UpdateForm_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].span
-  }, (props === null || props === void 0 || (_props$user = props.user) === null || _props$user === void 0 ? void 0 : _props$user.name.charAt(0).toUpperCase()) + (props === null || props === void 0 || (_props$user2 = props.user) === null || _props$user2 === void 0 ? void 0 : _props$user2.name.slice(1)))), /*#__PURE__*/React.createElement("input", {
+  }, /*#__PURE__*/React.createElement("h2", null, "Update a new Blog"), /*#__PURE__*/React.createElement("input", {
     className: "".concat(_UpdateForm_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].input, " ").concat(_UpdateForm_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].title),
     placeholder: "Title",
     type: "text",
     name: "title",
     value: props.blog.title,
     onChange: handleChange
-  }), /*#__PURE__*/React.createElement("textarea", {
+  }), /*#__PURE__*/React.createElement("input", {
     className: "".concat(_UpdateForm_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].input, " ").concat(_UpdateForm_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].body),
     placeholder: "Body",
     type: "text",
@@ -795,7 +795,7 @@ function ShowPage(props) {
   };
   return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
     to: '/'
-  }, "Go to Homepage"), /*#__PURE__*/React.createElement("h1", null, (blog === null || blog === void 0 ? void 0 : blog.title) || 'Loading....'), /*#__PURE__*/React.createElement("p", null, (blog === null || blog === void 0 ? void 0 : blog.body) || ''), allowChanges ? /*#__PURE__*/React.createElement("button", {
+  }, "Go to Homepage"), /*#__PURE__*/React.createElement("h1", null, (blog === null || blog === void 0 ? void 0 : blog.title) || 'Loading....'), /*#__PURE__*/React.createElement("p", null, (blog === null || blog === void 0 ? void 0 : blog.body) || ''), allowChanges && !showUpdate ? /*#__PURE__*/React.createElement("button", {
     onClick: () => setShowUpdate(!showUpdate)
   }, "Reveal Update Form") : /*#__PURE__*/React.createElement(React.Fragment, null), allowChanges && showUpdate ? /*#__PURE__*/React.createElement(_components_UpdateForm_UpdateForm__WEBPACK_IMPORTED_MODULE_2__["default"], {
     id: id,
@@ -2039,4 +2039,4 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=App.f097c053f1db861f483c829fd8ca7b62.js.map
+//# sourceMappingURL=App.f1368fda0f9a263d1e2436fd7d69e978.js.map

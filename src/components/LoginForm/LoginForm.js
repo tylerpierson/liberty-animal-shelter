@@ -7,6 +7,7 @@ export default function LoginForm (props){
         email: '',
         password: ''
     })
+    const navigateTo = useNavigate()
 
     const handleChange = (e) => {
         // Spread the credentials in so that as you edit, the other edited fields remain in place
@@ -23,6 +24,7 @@ export default function LoginForm (props){
                 onSubmit={(e) => {
                 e.preventDefault()
                 props.login(credentials)
+                navigateTo('/')
             }}>
                 <input className={styles.input} type='email' name='email' onChange={handleChange} value={credentials.email} placeholder='Email' />
                 <input className={styles.input} type='password' name='password' onChange={handleChange} value={credentials.password} placeholder='Password' />

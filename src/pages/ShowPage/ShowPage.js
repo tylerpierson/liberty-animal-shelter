@@ -64,7 +64,7 @@ export default function ShowPage(props){
             <Link to={'/'}>Go to Homepage</Link>
             <h1>{blog?.title || 'Loading....'}</h1>
             <p>{blog?.body || ''}</p>
-            { allowChanges?
+            { allowChanges && !showUpdate ?
             <button onClick={() => setShowUpdate(!showUpdate)}>Reveal Update Form</button>:
             <></>
             }
