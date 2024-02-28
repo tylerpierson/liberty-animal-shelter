@@ -30,11 +30,17 @@ export default function CreateForm(props) {
 
     return(
         <form onSubmit={handleSubmit} className={styles.form}>
-            <h2>Create a new <span className={styles.span}>Animal</span></h2>
-            <label>Name<input className={`${styles.input} ${styles.title}`} placeholder="Name" type="text" name="name" value={formData.name} onChange={handleChange} /></label>
-            <label>Species<input className={`${styles.input} ${styles.title}`} placeholder="Species" type="text" name="species" value={formData.species} onChange={handleChange} /></label>
-            <label>Image URL<input className={`${styles.input} ${styles.title}`} placeholder="Image URL" type="text" name="image" value={formData.image ? formData.image : 'https://'} onChange={handleChange} /></label>
-            <select name="reservedForAdoption" value={formData.reservedForAdoption} onChange={handleChange}>
+            <h2>Add a new <span className={styles.span}>Animal</span></h2>
+            <div className={styles.inputContainer}>
+                <p className={styles.label}>Name</p><input className={`${styles.input} ${styles.title}`} type="text" name="name" value={formData.name} onChange={handleChange} />
+            </div>
+            <div className={styles.inputContainer}>
+                <p className={styles.label}>Species</p><input className={`${styles.input} ${styles.title}`} type="text" name="species" value={formData.species} onChange={handleChange} />
+            </div>
+            <div className={styles.inputContainer}>
+                <p className={styles.label}>Image URL</p><input className={`${styles.input} ${styles.title}`} placeholder="Image URL" type="text" name="image" value={formData.image ? formData.image : 'https://'} onChange={handleChange} />
+            </div>
+            <select className={styles.select} name="reservedForAdoption" value={formData.reservedForAdoption} onChange={handleChange}>
                 <option value={false}>Up for Adoption</option>
                 <option value={true}>Adopted</option>
             </select>

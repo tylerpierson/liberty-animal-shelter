@@ -263,7 +263,7 @@ function Animals(props) {
       key: animal._id
     }, /*#__PURE__*/React.createElement("h3", null, animal.name), /*#__PURE__*/React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__.Link, {
       to: "/animal/".concat(animal._id)
-    }, "This the link to the Show Page of ", "".concat(animal._id)));
+    }, "Click here to learn more about ", "".concat(animal.name.charAt(0).toUpperCase() + animal.name.slice(1))));
   }));
 }
 
@@ -319,23 +319,33 @@ function CreateForm(props) {
   return /*#__PURE__*/React.createElement("form", {
     onSubmit: handleSubmit,
     className: _CreateForm_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].form
-  }, /*#__PURE__*/React.createElement("h2", null, "Create a new ", /*#__PURE__*/React.createElement("span", {
+  }, /*#__PURE__*/React.createElement("h2", null, "Add a new ", /*#__PURE__*/React.createElement("span", {
     className: _CreateForm_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].span
-  }, "Animal")), /*#__PURE__*/React.createElement("label", null, "Name", /*#__PURE__*/React.createElement("input", {
+  }, "Animal")), /*#__PURE__*/React.createElement("div", {
+    className: _CreateForm_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].inputContainer
+  }, /*#__PURE__*/React.createElement("p", {
+    className: _CreateForm_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].label
+  }, "Name"), /*#__PURE__*/React.createElement("input", {
     className: "".concat(_CreateForm_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].input, " ").concat(_CreateForm_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].title),
-    placeholder: "Name",
     type: "text",
     name: "name",
     value: formData.name,
     onChange: handleChange
-  })), /*#__PURE__*/React.createElement("label", null, "Species", /*#__PURE__*/React.createElement("input", {
+  })), /*#__PURE__*/React.createElement("div", {
+    className: _CreateForm_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].inputContainer
+  }, /*#__PURE__*/React.createElement("p", {
+    className: _CreateForm_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].label
+  }, "Species"), /*#__PURE__*/React.createElement("input", {
     className: "".concat(_CreateForm_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].input, " ").concat(_CreateForm_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].title),
-    placeholder: "Species",
     type: "text",
     name: "species",
     value: formData.species,
     onChange: handleChange
-  })), /*#__PURE__*/React.createElement("label", null, "Image URL", /*#__PURE__*/React.createElement("input", {
+  })), /*#__PURE__*/React.createElement("div", {
+    className: _CreateForm_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].inputContainer
+  }, /*#__PURE__*/React.createElement("p", {
+    className: _CreateForm_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].label
+  }, "Image URL"), /*#__PURE__*/React.createElement("input", {
     className: "".concat(_CreateForm_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].input, " ").concat(_CreateForm_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].title),
     placeholder: "Image URL",
     type: "text",
@@ -343,6 +353,7 @@ function CreateForm(props) {
     value: formData.image ? formData.image : 'https://',
     onChange: handleChange
   })), /*#__PURE__*/React.createElement("select", {
+    className: _CreateForm_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].select,
     name: "reservedForAdoption",
     value: formData.reservedForAdoption,
     onChange: handleChange
@@ -832,7 +843,7 @@ function ShowPage(props) {
   }, "Go to Homepage"), /*#__PURE__*/React.createElement("h1", null, (animal === null || animal === void 0 ? void 0 : animal.name) || 'Loading....'), /*#__PURE__*/React.createElement("p", null, (animal === null || animal === void 0 ? void 0 : animal.species) || ''), /*#__PURE__*/React.createElement("img", {
     src: (animal === null || animal === void 0 ? void 0 : animal.image) || '',
     alt: (animal === null || animal === void 0 ? void 0 : animal.name) || ''
-  }), allowChanges && !showUpdate ? /*#__PURE__*/React.createElement("button", {
+  }), /*#__PURE__*/React.createElement("p", null, animal.reservedForAdoption === true ? 'Adopted' : 'Up for Adoption'), allowChanges && !showUpdate ? /*#__PURE__*/React.createElement("button", {
     onClick: () => setShowUpdate(!showUpdate)
   }, "Reveal Update Form") : /*#__PURE__*/React.createElement(React.Fragment, null), allowChanges && showUpdate ? /*#__PURE__*/React.createElement(_components_UpdateForm_UpdateForm__WEBPACK_IMPORTED_MODULE_2__["default"], {
     id: id,
@@ -901,6 +912,7 @@ ___CSS_LOADER_EXPORT___.locals = {
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, `.IDidpD4zfMJc7O08fYjm {
+  width: 600px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -917,13 +929,39 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.IDidpD4zfMJc7O08fYjm {
   letter-spacing: 1px;
   font-size: 35px;
 }
+.IDidpD4zfMJc7O08fYjm .hRWPgCiYDbhmHsCqNE0r {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.IDidpD4zfMJc7O08fYjm .UStvCk6iId7QUexzBOfS {
+  color: white;
+  text-shadow: -1.5px -1.5px 0 var(--nav-btn-border), 1.5px -1.5px 0 var(--nav-btn-border), -1.5px 1.5px 0 var(--nav-btn-border), 1.5px 1.5px 0 var(--nav-btn-border);
+  letter-spacing: 1px;
+  font-size: 20px;
+}
 .IDidpD4zfMJc7O08fYjm .eRWThHngXIkP05RfBkNr {
-  width: 90%;
+  width: 70%;
   font-size: 16px;
   border-radius: 10px;
   padding: 0.5rem;
+  color: lightgrey;
 }
 .IDidpD4zfMJc7O08fYjm .eRWThHngXIkP05RfBkNr:focus {
+  outline: none;
+  border: 2px solid var(--nav-btn-border);
+  box-shadow: 0px 0px 10px var(--nav-btn-border);
+}
+.IDidpD4zfMJc7O08fYjm .QpMIfuw95VPBawkzUael {
+  text-align: center;
+  width: 350px;
+  height: 50px;
+  font-size: 25px;
+  border: 2px solid var(--nav-btn-border);
+  border-radius: 10px;
+}
+.IDidpD4zfMJc7O08fYjm .QpMIfuw95VPBawkzUael:focus {
   outline: none;
   border: 2px solid var(--nav-btn-border);
   box-shadow: 0px 0px 10px var(--nav-btn-border);
@@ -938,7 +976,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.IDidpD4zfMJc7O08fYjm {
 }
 .IDidpD4zfMJc7O08fYjm .vTCM0vBqVHL0vrZ4YHw9 {
   border: none;
-  width: 120px;
+  width: 150px;
   height: 50px;
   font-size: 15px;
   font-weight: bold;
@@ -957,12 +995,15 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.IDidpD4zfMJc7O08fYjm {
   border: 3px solid var(--nav-btn-border);
   box-shadow: 0 0 10px var(--nav-btn-border);
   cursor: pointer;
-}`, "",{"version":3,"sources":["webpack://./src/components/CreateForm/CreateForm.module.scss"],"names":[],"mappings":"AAAA;EACI,aAAA;EACA,sBAAA;EACA,uBAAA;EACA,mBAAA;EACA,uCAAA;EACA,sCAAA;EACA,aAAA;EACA,mBAAA;EACA,8CAAA;AACJ;AAAI;EACI,YAAA;EACA,mKAAA;EACA,mBAAA;EACA,eAAA;AAER;AAAI;EACI,UAAA;EACA,eAAA;EACA,mBAAA;EACA,eAAA;AAER;AADQ;EACI,aAAA;EACA,uCAAA;EACA,8CAAA;AAGZ;AAAI;EACI,YAAA;EACA,kBAAA;AAER;AAAI;EACI,aAAA;EACA,oBAAA;AAER;AAAI;EACI,YAAA;EACA,YAAA;EACA,YAAA;EACA,eAAA;EACA,iBAAA;EACA,sBAAA;EACA,yBAAA;EACA,mBAAA;EACA,kCAAA;EACA,kBAAA;EACA,qBAAA;AAER;AADQ;EACI,qBAAA;EACA,qBAAA;EACA,iCAAA;EACA,4BAAA;EACA,uCAAA;EACA,0CAAA;EACA,eAAA;AAGZ","sourcesContent":[".form {\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n    border: 3px solid var(--nav-btn-border);\n    background-color: var(--nav-btn-color);\n    padding: 3rem;\n    border-radius: 10px;\n    box-shadow: 1px 1px 20px var(--nav-btn-border);\n    .span {\n        color: white;\n        text-shadow: -1.5px -1.5px 0 var(--nav-btn-border), 1.5px -1.5px 0 var(--nav-btn-border), -1.5px 1.5px 0 var(--nav-btn-border), 1.5px 1.5px 0 var(--nav-btn-border);\n        letter-spacing: 1px;\n        font-size: 35px;\n    }\n    .input {\n        width: 90%;\n        font-size: 16px;\n        border-radius: 10px;\n        padding: .5rem;\n        &:focus {\n            outline: none;\n            border: 2px solid var(--nav-btn-border);\n            box-shadow: 0px 0px 10px var(--nav-btn-border);\n        }\n    }\n    .title {\n        height: 20px;\n        margin-bottom: 3px;\n    }\n    .body {\n        height: 100px;\n        letter-spacing: -1px;\n    }\n    .button {\n        border: none;\n        width: 120px;\n        height: 50px;\n        font-size: 15px;\n        font-weight: bold;\n        color: var(--bg-color);\n        text-transform: uppercase;\n        border-radius: 10px;\n        background-color: var(--nav-color);\n        margin: 10px 0 0 0;\n        transition: .3s ease;\n        &:hover {\n            transform: scale(1.1);\n            transition: .3s ease;\n            background-color: var(--bg-color);\n            color: var(--nav-btn-border);\n            border: 3px solid var(--nav-btn-border);\n            box-shadow: 0 0 10px var(--nav-btn-border);\n            cursor: pointer;\n        }\n    }\n}"],"sourceRoot":""}]);
+}`, "",{"version":3,"sources":["webpack://./src/components/CreateForm/CreateForm.module.scss"],"names":[],"mappings":"AAAA;EACI,YAAA;EACA,aAAA;EACA,sBAAA;EACA,uBAAA;EACA,mBAAA;EACA,uCAAA;EACA,sCAAA;EACA,aAAA;EACA,mBAAA;EACA,8CAAA;AACJ;AAAI;EACI,YAAA;EACA,mKAAA;EACA,mBAAA;EACA,eAAA;AAER;AAAI;EACI,WAAA;EACA,aAAA;EACA,8BAAA;EACA,mBAAA;AAER;AAAI;EACI,YAAA;EACA,mKAAA;EACA,mBAAA;EACA,eAAA;AAER;AAAI;EACI,UAAA;EACA,eAAA;EACA,mBAAA;EACA,eAAA;EACA,gBAAA;AAER;AADQ;EACI,aAAA;EACA,uCAAA;EACA,8CAAA;AAGZ;AAAI;EACI,kBAAA;EACA,YAAA;EACA,YAAA;EACA,eAAA;EACA,uCAAA;EACA,mBAAA;AAER;AADQ;EACI,aAAA;EACA,uCAAA;EACA,8CAAA;AAGZ;AAAI;EACI,YAAA;EACA,kBAAA;AAER;AAAI;EACI,aAAA;EACA,oBAAA;AAER;AAAI;EACI,YAAA;EACA,YAAA;EACA,YAAA;EACA,eAAA;EACA,iBAAA;EACA,sBAAA;EACA,yBAAA;EACA,mBAAA;EACA,kCAAA;EACA,kBAAA;EACA,qBAAA;AAER;AADQ;EACI,qBAAA;EACA,qBAAA;EACA,iCAAA;EACA,4BAAA;EACA,uCAAA;EACA,0CAAA;EACA,eAAA;AAGZ","sourcesContent":[".form {\n    width: 600px;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n    border: 3px solid var(--nav-btn-border);\n    background-color: var(--nav-btn-color);\n    padding: 3rem;\n    border-radius: 10px;\n    box-shadow: 1px 1px 20px var(--nav-btn-border);\n    .span {\n        color: white;\n        text-shadow: -1.5px -1.5px 0 var(--nav-btn-border), 1.5px -1.5px 0 var(--nav-btn-border), -1.5px 1.5px 0 var(--nav-btn-border), 1.5px 1.5px 0 var(--nav-btn-border);\n        letter-spacing: 1px;\n        font-size: 35px;\n    }\n    .inputContainer {\n        width: 100%;\n        display: flex;\n        justify-content: space-between;\n        align-items: center;\n    }\n    .label {\n        color: white;\n        text-shadow: -1.5px -1.5px 0 var(--nav-btn-border), 1.5px -1.5px 0 var(--nav-btn-border), -1.5px 1.5px 0 var(--nav-btn-border), 1.5px 1.5px 0 var(--nav-btn-border);\n        letter-spacing: 1px;\n        font-size: 20px;\n    }\n    .input {\n        width: 70%;\n        font-size: 16px;\n        border-radius: 10px;\n        padding: .5rem;\n        color: lightgrey;\n        &:focus {\n            outline: none;\n            border: 2px solid var(--nav-btn-border);\n            box-shadow: 0px 0px 10px var(--nav-btn-border);\n        }\n    }\n    .select {\n        text-align: center;\n        width: 350px;\n        height: 50px;\n        font-size: 25px;\n        border: 2px solid var(--nav-btn-border);\n        border-radius: 10px;\n        &:focus {\n            outline: none;\n            border: 2px solid var(--nav-btn-border);\n            box-shadow: 0px 0px 10px var(--nav-btn-border);\n        }\n    }\n    .title {\n        height: 20px;\n        margin-bottom: 3px;\n    }\n    .body {\n        height: 100px;\n        letter-spacing: -1px;\n    }\n    .button {\n        border: none;\n        width: 150px;\n        height: 50px;\n        font-size: 15px;\n        font-weight: bold;\n        color: var(--bg-color);\n        text-transform: uppercase;\n        border-radius: 10px;\n        background-color: var(--nav-color);\n        margin: 10px 0 0 0;\n        transition: .3s ease;\n        &:hover {\n            transform: scale(1.1);\n            transition: .3s ease;\n            background-color: var(--bg-color);\n            color: var(--nav-btn-border);\n            border: 3px solid var(--nav-btn-border);\n            box-shadow: 0 0 10px var(--nav-btn-border);\n            cursor: pointer;\n        }\n    }\n}"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"form": `IDidpD4zfMJc7O08fYjm`,
 	"span": `MjeCvlyAtsJJ3Q2wKOJT`,
+	"inputContainer": `hRWPgCiYDbhmHsCqNE0r`,
+	"label": `UStvCk6iId7QUexzBOfS`,
 	"input": `eRWThHngXIkP05RfBkNr`,
+	"select": `QpMIfuw95VPBawkzUael`,
 	"title": `I6DQ_ulQ6WzYEXsJ3SQU`,
 	"body": `of2v8VlkynnVuJ67Lb0D`,
 	"button": `vTCM0vBqVHL0vrZ4YHw9`
@@ -1292,10 +1333,10 @@ ___CSS_LOADER_EXPORT___.locals = {};
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, `:root {
-  --bg-color: #F0F4EF;
-  --nav-color: #344966;
-  --nav-btn-color: #B4CDED;
-  --nav-btn-border: #0D1821;
+  --bg-color: #f7f7e5;
+  --nav-color: #664e34;
+  --nav-btn-color: #f5c69a;
+  --nav-btn-border: #21170d;
 }
 
 body {
@@ -1303,7 +1344,7 @@ body {
   background-color: var(--bg-color);
   margin: 0;
   padding: 0;
-}`, "",{"version":3,"sources":["webpack://./src/index.module.scss"],"names":[],"mappings":"AAAA;EACI,mBAAA;EACA,oBAAA;EACA,wBAAA;EACA,yBAAA;AACJ;;AAEA;EACI,uBAAA;EACA,iCAAA;EACA,SAAA;EACA,UAAA;AACJ","sourcesContent":[":root {\n    --bg-color: #F0F4EF;\n    --nav-color: #344966;\n    --nav-btn-color: #B4CDED;\n    --nav-btn-border: #0D1821;\n}\n\nbody {\n    font-family: sans-serif;\n    background-color: var(--bg-color);\n    margin: 0;\n    padding: 0;\n}"],"sourceRoot":""}]);
+}`, "",{"version":3,"sources":["webpack://./src/index.module.scss"],"names":[],"mappings":"AAAA;EACI,mBAAA;EACA,oBAAA;EACA,wBAAA;EACA,yBAAA;AACJ;;AAEA;EACI,uBAAA;EACA,iCAAA;EACA,SAAA;EACA,UAAA;AACJ","sourcesContent":[":root {\n    --bg-color: #f7f7e5;\n    --nav-color: #664e34;\n    --nav-btn-color: #f5c69a;\n    --nav-btn-border: #21170d;\n}\n\nbody {\n    font-family: sans-serif;\n    background-color: var(--bg-color);\n    margin: 0;\n    padding: 0;\n}"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {};
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
@@ -2076,4 +2117,4 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=App.b1b5c20d6cfd7b12fc9e564772bc6516.js.map
+//# sourceMappingURL=App.68f6b691146b6d0657a43248cc7d1681.js.map

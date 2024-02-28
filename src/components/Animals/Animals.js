@@ -6,7 +6,9 @@ export default function Animals(props) {
             return(
             <article key={animal._id}>
                 <h3>{animal.name}</h3>
-                <Link to={`/animal/${animal._id}`}>This the link to the Show Page of {`${animal._id}`}</Link>
+                <Link to={`/animal/${animal._id}`}>
+                    Click here to learn more about {`${animal.name.charAt(0).toUpperCase() + animal.name.slice(1)}`}
+                </Link>
             </article>)
         })}
     </div>)

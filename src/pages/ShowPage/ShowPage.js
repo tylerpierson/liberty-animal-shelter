@@ -67,6 +67,7 @@ export default function ShowPage(props){
             <h1>{animal?.name || 'Loading....'}</h1>
             <p>{animal?.species || ''}</p>
             <img src={animal?.image || ''} alt={animal?.name || ''} />
+            <p>{animal.reservedForAdoption === true ?  'Adopted' : 'Up for Adoption'}</p>
             { allowChanges && !showUpdate ?
             <button onClick={() => setShowUpdate(!showUpdate)}>Reveal Update Form</button>:
             <></>
