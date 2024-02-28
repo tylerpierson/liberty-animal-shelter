@@ -1,17 +1,19 @@
 import { useState, useEffect } from 'react'
-import Blog from '../../components/Blog/Blog'
+import Animal from '../../components/Animal/Animal'
 import UpdateForm from '../../components/UpdateForm/UpdateForm'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 
 export default function ShowPage(props){
-    // display the individual blog posts --- Blog Component
-    // be able to update the blog post --- Update Component
-    // be able to delete the blog post --- button (not to be confused with a button component)
+    // display the individual animal posts --- Animal Component
+    // be able to update the animal post --- Update Component
+    // be able to delete the animal post --- button (not to be confused with a button component)
     const [showUpdate, setShowUpdate] = useState(false)
     const [allowChanges, setAllowChanges] = useState(false)
-    const [blog, setBlog] = useState({
-        title:'',
-        body: '',
+    const [animal, setAnimal] = useState({
+        name:'',
+        species: '',
+        image: '',
+        reservedForAdoption: false,
         user: ''
     })
 
@@ -22,15 +24,15 @@ export default function ShowPage(props){
     const navigateTo = useNavigate()
 
     useEffect(() => {
-        const fetchBlog = async () => {
+        const fetchAnimal = async () => {
             try {
-               const data = await props.getIndividualBlog(id)
-               setBlog(data) 
+               const data = await props.getIndividualAnimal(id)
+               setAnimal(data) 
             } catch (error) {
                 console.error(error)
             }
         }
-        fetchBlog()
+        fetchAnimal()
     }, [])
 
     // Checking the token && user in localStorage
@@ -45,14 +47,14 @@ export default function ShowPage(props){
 
     useEffect(() => {
         if(props.user){
-            if(blog && props.user._id === blog.user){
+            if(animal && props.user._id === animal.user){
             setAllowChanges(true)
         }}
-    }, [props.user, blog])
+    }, [props.user, animal])
 
     const handleDelete = async () => {
         try {
-            await props.deleteBlog(id, props.token)
+            await props.deleteAnimal(id, props.token)
             navigateTo('/')
         } catch (error) {
             console.error(error)
@@ -62,14 +64,15 @@ export default function ShowPage(props){
     return(
         <div>
             <Link to={'/'}>Go to Homepage</Link>
-            <h1>{blog?.title || 'Loading....'}</h1>
-            <p>{blog?.body || ''}</p>
+            <h1>{animal?.name || 'Loading....'}</h1>
+            <p>{animal?.species || ''}</p>
+            <img src={animal?.image || ''} alt={animal?.name || ''} />
             { allowChanges && !showUpdate ?
             <button onClick={() => setShowUpdate(!showUpdate)}>Reveal Update Form</button>:
             <></>
             }
-            {allowChanges && showUpdate ? <UpdateForm id={id} updateBlog={props.updateBlog} setShowUpdate={setShowUpdate} setBlog={setBlog} blog={blog} token={props.token} setToken={props.token}/> : <></>}
-            {allowChanges? <button onClick={handleDelete}>Delete Blog</button>: <></>}
+            {allowChanges && showUpdate ? <UpdateForm id={id} updateAnimal={props.updateAnimal} setShowUpdate={setShowUpdate} setAnimal={setAnimal} animal={animal} token={props.token} setToken={props.token}/> : <></>}
+            {allowChanges? <button onClick={handleDelete}>Delete Animal</button>: <></>}
         </div>
     )
 }

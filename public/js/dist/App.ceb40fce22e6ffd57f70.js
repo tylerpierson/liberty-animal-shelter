@@ -86,17 +86,17 @@ function App() {
     }
   };
 
-  // CreateBlog
-  // We need token authentication in order to verify that someone can make a blog
+  // CreateAnimal
+  // We need token authentication in order to verify that someone can make a animal
   // Now that we have the token from the signup/login above, we will pass it into the following functions for authentication
-  const createBlog = async (blogData, token) => {
+  const createAnimal = async (animalData, token) => {
     // https://i.imgur.com/3quZxs4.png
     // Step 4
     if (!token) {
       return;
     }
     try {
-      const response = await fetch('/api/blogs', {
+      const response = await fetch('/api/animals', {
         method: 'POST',
         headers: {
           // This part is only necessary when sending data, not when retrieving it, i.e. GET requests
@@ -105,7 +105,7 @@ function App() {
           // Tell it that we have a user token
           'Authorization': "Bearer ".concat(token)
         },
-        body: JSON.stringify(blogData)
+        body: JSON.stringify(animalData)
       });
       const data = await response.json();
       return data;
@@ -114,10 +114,10 @@ function App() {
     }
   };
 
-  // ReadBlog - we don't need authentication
-  const getAllBlogs = async () => {
+  // ReadAnimal - we don't need authentication
+  const getAllAnimals = async () => {
     try {
-      const response = await fetch('/api/blogs');
+      const response = await fetch('/api/animals');
       const data = await response.json();
       return data;
     } catch (error) {
@@ -125,10 +125,10 @@ function App() {
     }
   };
 
-  // Show and individual blog - no need for authentication
-  const getIndividualBlog = async id => {
+  // Show and individual animal - no need for authentication
+  const getIndividualAnimal = async id => {
     try {
-      const response = await fetch("/api/blogs/".concat(id));
+      const response = await fetch("/api/animals/".concat(id));
       const data = await response.json();
       return data;
     } catch (error) {
@@ -136,15 +136,15 @@ function App() {
     }
   };
 
-  // UpdateBlog
-  const updateBlog = async (newBlogData, id, token) => {
+  // UpdateAnimal
+  const updateAnimal = async (newAnimalData, id, token) => {
     // https://i.imgur.com/3quZxs4.png
     // Step 4
     if (!token) {
       return;
     }
     try {
-      const response = await fetch("/api/blogs/".concat(id), {
+      const response = await fetch("/api/animals/".concat(id), {
         method: 'PUT',
         headers: {
           // This part is only necessary when sending data, not when retrieving it, i.e. GET requests
@@ -153,7 +153,7 @@ function App() {
           // Tell it that we have a user token
           'Authorization': "Bearer ".concat(token)
         },
-        body: JSON.stringify(newBlogData)
+        body: JSON.stringify(newAnimalData)
       });
       const data = await response.json();
       return data;
@@ -162,15 +162,15 @@ function App() {
     }
   };
 
-  // DeleteBlog
-  const deleteBlog = async (id, token) => {
+  // DeleteAnimal
+  const deleteAnimal = async (id, token) => {
     // https://i.imgur.com/3quZxs4.png
     // Step 4
     if (!token) {
       return;
     }
     try {
-      const response = await fetch("/api/blogs/".concat(id), {
+      const response = await fetch("/api/animals/".concat(id), {
         method: 'DELETE',
         headers: {
           // Don't need content-type because we are not sending any data
@@ -202,8 +202,8 @@ function App() {
       ,
       setToken: setToken,
       setUser: setUser,
-      createBlog: createBlog,
-      getAllBlogs: getAllBlogs
+      createAnimal: createAnimal,
+      getAllAnimals: getAllAnimals
     })
   }), /*#__PURE__*/React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
     path: "/register",
@@ -216,54 +216,54 @@ function App() {
       login: login
     })
   }), /*#__PURE__*/React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
-    path: "/blog/:id",
+    path: "/animal/:id",
     element: /*#__PURE__*/React.createElement(_pages_ShowPage_ShowPage__WEBPACK_IMPORTED_MODULE_4__["default"], {
       user: user,
       token: token,
       setToken: setToken,
       setUser: setUser,
-      getIndividualBlog: getIndividualBlog,
-      deleteBlog: deleteBlog,
-      updateBlog: updateBlog
+      getIndividualAnimal: getIndividualAnimal,
+      deleteAnimal: deleteAnimal,
+      updateAnimal: updateAnimal
     })
   }))));
 }
 
 /***/ }),
 
-/***/ "./src/components/Blog/Blog.js":
-/*!*************************************!*\
-  !*** ./src/components/Blog/Blog.js ***!
-  \*************************************/
+/***/ "./src/components/Animal/Animal.js":
+/*!*****************************************!*\
+  !*** ./src/components/Animal/Animal.js ***!
+  \*****************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 /* unused harmony export default */
 /* provided dependency */ var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-function Blog(props) {
-  return /*#__PURE__*/React.createElement("h1", null, "Blog");
+function Animal(props) {
+  return /*#__PURE__*/React.createElement("h1", null, "Animal");
 }
 
 /***/ }),
 
-/***/ "./src/components/Blogs/Blogs.js":
-/*!***************************************!*\
-  !*** ./src/components/Blogs/Blogs.js ***!
-  \***************************************/
+/***/ "./src/components/Animals/Animals.js":
+/*!*******************************************!*\
+  !*** ./src/components/Animals/Animals.js ***!
+  \*******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Blogs)
+/* harmony export */   "default": () => (/* binding */ Animals)
 /* harmony export */ });
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
 /* provided dependency */ var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
-function Blogs(props) {
-  return /*#__PURE__*/React.createElement("div", null, props.blogs.map(blog => {
+function Animals(props) {
+  return /*#__PURE__*/React.createElement("div", null, props.animals.map(animal => {
     return /*#__PURE__*/React.createElement("article", {
-      key: blog._id
-    }, /*#__PURE__*/React.createElement("h3", null, blog.title), /*#__PURE__*/React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__.Link, {
-      to: "/blog/".concat(blog._id)
-    }, "This the link to the Show Page of ", "".concat(blog._id)));
+      key: animal._id
+    }, /*#__PURE__*/React.createElement("h3", null, animal.name), /*#__PURE__*/React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__.Link, {
+      to: "/animal/".concat(animal._id)
+    }, "This the link to the Show Page of ", "".concat(animal._id)));
   }));
 }
 
@@ -293,16 +293,18 @@ function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = 
 
 function CreateForm(props) {
   const [formData, setFormData] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
-    title: '',
-    body: ''
+    name: '',
+    species: '',
+    image: '',
+    reservedForAdoption: false
   });
   const navigateTo = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.useNavigate)();
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      const data = await props.createBlog(formData, props.token);
+      const data = await props.createAnimal(formData, props.token);
       // cool thing to do once there is a show page done
-      navigateTo("/blog/".concat(data._id));
+      navigateTo("/animal/".concat(data._id));
     } catch (error) {
       console.error(error);
     }
@@ -317,26 +319,41 @@ function CreateForm(props) {
   return /*#__PURE__*/React.createElement("form", {
     onSubmit: handleSubmit,
     className: _CreateForm_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].form
-  }, /*#__PURE__*/React.createElement("h2", null, "Create a new Blog, ", /*#__PURE__*/React.createElement("span", {
+  }, /*#__PURE__*/React.createElement("h2", null, "Create a new ", /*#__PURE__*/React.createElement("span", {
     className: _CreateForm_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].span
-  }, props.user.name.charAt(0).toUpperCase() + props.user.name.slice(1))), /*#__PURE__*/React.createElement("input", {
+  }, "Animal")), /*#__PURE__*/React.createElement("label", null, "Name", /*#__PURE__*/React.createElement("input", {
     className: "".concat(_CreateForm_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].input, " ").concat(_CreateForm_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].title),
-    placeholder: "Title",
+    placeholder: "Name",
     type: "text",
-    name: "title",
-    value: formData.title,
+    name: "name",
+    value: formData.name,
     onChange: handleChange
-  }), /*#__PURE__*/React.createElement("input", {
-    className: "".concat(_CreateForm_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].input, " ").concat(_CreateForm_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].body),
-    placeholder: "Body",
+  })), /*#__PURE__*/React.createElement("label", null, "Species", /*#__PURE__*/React.createElement("input", {
+    className: "".concat(_CreateForm_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].input, " ").concat(_CreateForm_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].title),
+    placeholder: "Species",
     type: "text",
-    name: "body",
-    value: formData.body,
+    name: "species",
+    value: formData.species,
     onChange: handleChange
-  }), /*#__PURE__*/React.createElement("input", {
+  })), /*#__PURE__*/React.createElement("label", null, "Image URL", /*#__PURE__*/React.createElement("input", {
+    className: "".concat(_CreateForm_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].input, " ").concat(_CreateForm_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].title),
+    placeholder: "Image URL",
+    type: "text",
+    name: "image",
+    value: formData.image ? formData.image : 'https://',
+    onChange: handleChange
+  })), /*#__PURE__*/React.createElement("select", {
+    name: "reservedForAdoption",
+    value: formData.reservedForAdoption,
+    onChange: handleChange
+  }, /*#__PURE__*/React.createElement("option", {
+    value: false
+  }, "Up for Adoption"), /*#__PURE__*/React.createElement("option", {
+    value: true
+  }, "Adopted")), /*#__PURE__*/React.createElement("input", {
     className: _CreateForm_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].button,
     type: "submit",
-    value: "Create Blog"
+    value: "Create Animal"
   }));
 }
 
@@ -435,7 +452,7 @@ function LoginForm(props) {
 function NavBar(props) {
   const [token, setToken] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(localStorage.getItem('token'));
   const [showLogin, setShowLogin] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true);
-  return /*#__PURE__*/React.createElement("ul", {
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("ul", {
     className: _NavBar_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].ul
   }, /*#__PURE__*/React.createElement("a", {
     className: "".concat(_NavBar_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].a, " ").concat(_NavBar_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].home),
@@ -444,7 +461,7 @@ function NavBar(props) {
     className: _NavBar_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].li
   }, "Home")), /*#__PURE__*/React.createElement("h1", {
     className: _NavBar_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].h1
-  }, "Liberty Blogs"), !token ? /*#__PURE__*/React.createElement("a", {
+  }, "Liberty Animals"), !token ? /*#__PURE__*/React.createElement("a", {
     className: "".concat(_NavBar_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].a, " ").concat(_NavBar_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].login),
     href: "/register"
   }, /*#__PURE__*/React.createElement("li", {
@@ -458,7 +475,7 @@ function NavBar(props) {
       setToken(null);
       window.location.reload();
     }
-  }, "Logout")) : '');
+  }, "Logout")) : ''));
 }
 
 /***/ }),
@@ -560,8 +577,8 @@ function UpdateForm(props) {
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      const data = await props.updateBlog(props.blog, props.id, props.token);
-      props.setBlog(data);
+      const data = await props.updateAnimal(props.animal, props.id, props.token);
+      props.setAnimal(data);
       // Make the form disappear after submission
       props.setShowUpdate(false);
     } catch (error) {
@@ -569,31 +586,46 @@ function UpdateForm(props) {
     }
   };
   const handleChange = e => {
-    props.setBlog(_objectSpread(_objectSpread({}, props.blog), {}, {
+    props.setAnimal(_objectSpread(_objectSpread({}, props.animal), {}, {
       [e.target.name]: e.target.value
     }));
   };
   return /*#__PURE__*/React.createElement("form", {
     onSubmit: handleSubmit,
     className: _UpdateForm_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].form
-  }, /*#__PURE__*/React.createElement("h2", null, "Update a new Blog"), /*#__PURE__*/React.createElement("input", {
+  }, /*#__PURE__*/React.createElement("h2", null, "Update a new Animal"), /*#__PURE__*/React.createElement("input", {
     className: "".concat(_UpdateForm_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].input, " ").concat(_UpdateForm_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].title),
-    placeholder: "Title",
+    placeholder: "Name",
     type: "text",
-    name: "title",
-    value: props.blog.title,
+    name: "name",
+    value: props.animal.name,
     onChange: handleChange
   }), /*#__PURE__*/React.createElement("input", {
-    className: "".concat(_UpdateForm_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].input, " ").concat(_UpdateForm_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].body),
-    placeholder: "Body",
+    className: "".concat(_UpdateForm_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].input, " ").concat(_UpdateForm_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].title),
+    placeholder: "Species",
     type: "text",
-    name: "body",
-    value: props.blog.body,
+    name: "species",
+    value: props.animal.species,
     onChange: handleChange
   }), /*#__PURE__*/React.createElement("input", {
+    className: "".concat(_UpdateForm_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].input, " ").concat(_UpdateForm_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].title),
+    placeholder: "Image URL",
+    type: "text",
+    name: "image",
+    value: props.animal.image,
+    onChange: handleChange
+  }), /*#__PURE__*/React.createElement("select", {
+    name: "reservedForAdoption",
+    value: props.animal.reservedForAdoption,
+    onChange: handleChange
+  }, /*#__PURE__*/React.createElement("option", {
+    value: false
+  }, "Up for Adoption"), /*#__PURE__*/React.createElement("option", {
+    value: true
+  }, "Adopted")), /*#__PURE__*/React.createElement("input", {
     className: _UpdateForm_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].button,
     type: "submit",
-    value: "Update Blog"
+    value: "Update Animal"
   }));
 }
 
@@ -667,7 +699,7 @@ function AuthPage(props) {
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_CreateForm_CreateForm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/CreateForm/CreateForm */ "./src/components/CreateForm/CreateForm.js");
-/* harmony import */ var _components_Blogs_Blogs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/Blogs/Blogs */ "./src/components/Blogs/Blogs.js");
+/* harmony import */ var _components_Animals_Animals__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/Animals/Animals */ "./src/components/Animals/Animals.js");
 /* harmony import */ var _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./HomePage.module.scss */ "./src/pages/HomePage/HomePage.module.scss");
 /* provided dependency */ var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
@@ -675,21 +707,21 @@ function AuthPage(props) {
 
 
 function HomePage(props) {
-  const [blogs, setBlogs] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
+  const [animals, setAnimals] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
   const [showCreate, setShowCreate] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
 
-  // Blogs useEffect
-  // Make sure we have the blog data after the user mounts
+  // Animals useEffect
+  // Make sure we have the animal data after the user mounts
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    const fetchBlogs = async () => {
+    const fetchAnimals = async () => {
       try {
-        const data = await props.getAllBlogs();
-        setBlogs(data);
+        const data = await props.getAllAnimals();
+        setAnimals(data);
       } catch (error) {
         console.error(error);
       }
     };
-    fetchBlogs();
+    fetchAnimals();
   }, []);
 
   // Checking the token && user in localStorage
@@ -704,16 +736,16 @@ function HomePage(props) {
     if (props.token) {
       setShowCreate(true);
     }
-  }, []);
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h1", {
+  }, [props.token, props.user]);
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", null, props.user ? /*#__PURE__*/React.createElement("h1", {
     className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].h1
-  }, "Welcome Back!"), showCreate ? /*#__PURE__*/React.createElement(_components_CreateForm_CreateForm__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  }, "Welcome Back, ", props.user.name.charAt(0).toUpperCase() + props.user.name.slice(1), "!") : /*#__PURE__*/React.createElement("h1", null, "Welcome to Liberty Animals!"), showCreate ? /*#__PURE__*/React.createElement(_components_CreateForm_CreateForm__WEBPACK_IMPORTED_MODULE_1__["default"], {
     user: props.user,
-    createBlog: props.createBlog,
+    createAnimal: props.createAnimal,
     token: props.token
-  }) : /*#__PURE__*/React.createElement(React.Fragment, null), blogs.length ? /*#__PURE__*/React.createElement(_components_Blogs_Blogs__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    blogs: blogs
-  }) : 'Sorry, no blogs yet!'));
+  }) : /*#__PURE__*/React.createElement(React.Fragment, null), animals.length ? /*#__PURE__*/React.createElement(_components_Animals_Animals__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    animals: animals
+  }) : 'Sorry, no animals yet!'));
 }
 
 /***/ }),
@@ -729,7 +761,7 @@ function HomePage(props) {
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_Blog_Blog__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/Blog/Blog */ "./src/components/Blog/Blog.js");
+/* harmony import */ var _components_Animal_Animal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/Animal/Animal */ "./src/components/Animal/Animal.js");
 /* harmony import */ var _components_UpdateForm_UpdateForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/UpdateForm/UpdateForm */ "./src/components/UpdateForm/UpdateForm.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
@@ -739,14 +771,16 @@ function HomePage(props) {
 
 
 function ShowPage(props) {
-  // display the individual blog posts --- Blog Component
-  // be able to update the blog post --- Update Component
-  // be able to delete the blog post --- button (not to be confused with a button component)
+  // display the individual animal posts --- Animal Component
+  // be able to update the animal post --- Update Component
+  // be able to delete the animal post --- button (not to be confused with a button component)
   const [showUpdate, setShowUpdate] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [allowChanges, setAllowChanges] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
-  const [blog, setBlog] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
-    title: '',
-    body: '',
+  const [animal, setAnimal] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+    name: '',
+    species: '',
+    image: '',
+    reservedForAdoption: false,
     user: ''
   });
 
@@ -758,15 +792,15 @@ function ShowPage(props) {
   // navigate to other pages
   const navigateTo = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useNavigate)();
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    const fetchBlog = async () => {
+    const fetchAnimal = async () => {
       try {
-        const data = await props.getIndividualBlog(id);
-        setBlog(data);
+        const data = await props.getIndividualAnimal(id);
+        setAnimal(data);
       } catch (error) {
         console.error(error);
       }
     };
-    fetchBlog();
+    fetchAnimal();
   }, []);
 
   // Checking the token && user in localStorage
@@ -780,14 +814,14 @@ function ShowPage(props) {
   }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     if (props.user) {
-      if (blog && props.user._id === blog.user) {
+      if (animal && props.user._id === animal.user) {
         setAllowChanges(true);
       }
     }
-  }, [props.user, blog]);
+  }, [props.user, animal]);
   const handleDelete = async () => {
     try {
-      await props.deleteBlog(id, props.token);
+      await props.deleteAnimal(id, props.token);
       navigateTo('/');
     } catch (error) {
       console.error(error);
@@ -795,19 +829,22 @@ function ShowPage(props) {
   };
   return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
     to: '/'
-  }, "Go to Homepage"), /*#__PURE__*/React.createElement("h1", null, (blog === null || blog === void 0 ? void 0 : blog.title) || 'Loading....'), /*#__PURE__*/React.createElement("p", null, (blog === null || blog === void 0 ? void 0 : blog.body) || ''), allowChanges && !showUpdate ? /*#__PURE__*/React.createElement("button", {
+  }, "Go to Homepage"), /*#__PURE__*/React.createElement("h1", null, (animal === null || animal === void 0 ? void 0 : animal.name) || 'Loading....'), /*#__PURE__*/React.createElement("p", null, (animal === null || animal === void 0 ? void 0 : animal.species) || ''), /*#__PURE__*/React.createElement("img", {
+    src: (animal === null || animal === void 0 ? void 0 : animal.image) || '',
+    alt: (animal === null || animal === void 0 ? void 0 : animal.name) || ''
+  }), allowChanges && !showUpdate ? /*#__PURE__*/React.createElement("button", {
     onClick: () => setShowUpdate(!showUpdate)
   }, "Reveal Update Form") : /*#__PURE__*/React.createElement(React.Fragment, null), allowChanges && showUpdate ? /*#__PURE__*/React.createElement(_components_UpdateForm_UpdateForm__WEBPACK_IMPORTED_MODULE_2__["default"], {
     id: id,
-    updateBlog: props.updateBlog,
+    updateAnimal: props.updateAnimal,
     setShowUpdate: setShowUpdate,
-    setBlog: setBlog,
-    blog: blog,
+    setAnimal: setAnimal,
+    animal: animal,
     token: props.token,
     setToken: props.token
   }) : /*#__PURE__*/React.createElement(React.Fragment, null), allowChanges ? /*#__PURE__*/React.createElement("button", {
     onClick: handleDelete
-  }, "Delete Blog") : /*#__PURE__*/React.createElement(React.Fragment, null));
+  }, "Delete Animal") : /*#__PURE__*/React.createElement(React.Fragment, null));
 }
 
 /***/ }),
@@ -2039,4 +2076,4 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=App.f1368fda0f9a263d1e2436fd7d69e978.js.map
+//# sourceMappingURL=App.b1b5c20d6cfd7b12fc9e564772bc6516.js.map

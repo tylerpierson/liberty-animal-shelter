@@ -4,17 +4,19 @@ import { useNavigate } from 'react-router-dom'
 
 export default function CreateForm(props) {
     const [formData, setFormData] = useState({
-        title: '',
-        body: ''
+        name: '',
+        species: '',
+        image: '',
+        reservedForAdoption: false
     })
 
     const navigateTo = useNavigate()
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const data = await props.createBlog(formData, props.token)
+            const data = await props.createAnimal(formData, props.token)
             // cool thing to do once there is a show page done
-            navigateTo(`/blog/${data._id}`)
+            navigateTo(`/animal/${data._id}`)
         } catch (error) {
             console.error(error)
         }
@@ -28,10 +30,15 @@ export default function CreateForm(props) {
 
     return(
         <form onSubmit={handleSubmit} className={styles.form}>
-            <h2>Create a new Blog, <span className={styles.span}>{props.user.name.charAt(0).toUpperCase() + props.user.name.slice(1)}</span></h2>
-            <input className={`${styles.input} ${styles.title}`} placeholder="Title" type="text" name="title" value={formData.title} onChange={handleChange} />
-            <input className={`${styles.input} ${styles.body}`} placeholder="Body" type="text" name="body" value={formData.body} onChange={handleChange} />
-            <input className={styles.button} type="submit" value="Create Blog" />
+            <h2>Create a new <span className={styles.span}>Animal</span></h2>
+            <label>Name<input className={`${styles.input} ${styles.title}`} placeholder="Name" type="text" name="name" value={formData.name} onChange={handleChange} /></label>
+            <label>Species<input className={`${styles.input} ${styles.title}`} placeholder="Species" type="text" name="species" value={formData.species} onChange={handleChange} /></label>
+            <label>Image URL<input className={`${styles.input} ${styles.title}`} placeholder="Image URL" type="text" name="image" value={formData.image ? formData.image : 'https://'} onChange={handleChange} /></label>
+            <select name="reservedForAdoption" value={formData.reservedForAdoption} onChange={handleChange}>
+                <option value={false}>Up for Adoption</option>
+                <option value={true}>Adopted</option>
+            </select>
+            <input className={styles.button} type="submit" value="Create Animal" />
         </form>
     )
 }
